@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kcfg>
+  <kcfgfile name=""/>
+  <group name="General">
+    <entry name="imagePath" type="String">
+      <default></default>
+      <label>Image path</label>
+    </entry>
+  </group>
+</kcfg>
+
