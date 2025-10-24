@@ -24,7 +24,6 @@ PlasmoidItem {
             fillMode: Image.PreserveAspectFit
             source: imagePath !== "" ? imagePath : Qt.resolvedUrl("../images/evernight.gif")
             cache: true
-            smooth: true
         }
 
         MouseArea {
