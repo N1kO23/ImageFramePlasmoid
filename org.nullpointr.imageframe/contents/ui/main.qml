@@ -4,8 +4,8 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 
 PlasmoidItem {
     id: root
-    width: 300
-    height: 300
+    width: 200
+    height: 200
 
     Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
 
@@ -22,7 +22,7 @@ PlasmoidItem {
             id: pic
             anchors.fill: parent
             fillMode: Image.PreserveAspectFit
-            source: imagePath !== "" ? imagePath : "file:///home/nullpointr/Pictures/evernight.gif"
+            source: imagePath !== "" ? imagePath : Qt.resolvedUrl("../images/evernight.gif")
             cache: true
             smooth: true
         }
