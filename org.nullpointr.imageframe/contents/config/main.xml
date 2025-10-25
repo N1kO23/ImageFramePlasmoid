@@ -2,9 +2,14 @@
 <kcfg>
   <kcfgfile name=""/>
   <group name="General">
-    <entry name="imagePath" type="String">
+    <entry name="imagePath" type="string">
       <default></default>
-      <label>Image path</label>
+    </entry>
+    <entry name="smooth" type="bool">
+      <default>true</default>
+    </entry>
+    <entry name="playbackSpeed" type="int">
+      <default>10</default>
     </entry>
   </group>
 </kcfg>

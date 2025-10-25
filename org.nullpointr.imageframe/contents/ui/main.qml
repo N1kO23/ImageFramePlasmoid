@@ -9,10 +9,12 @@ PlasmoidItem {
 
     Plasmoid.backgroundHints: PlasmaCore.Types.NoBackground
 
-    layer.enabled: true
-    layer.smooth: true
-
     property string imagePath: plasmoid.configuration.imagePath
+    property double playbackSpeed: plasmoid.configuration.playbackSpeed
+    property bool smooth: plasmoid.configuration.smooth
+
+    layer.enabled: true
+    layer.smooth: smooth
 
     Rectangle {
         anchors.fill: parent
@@ -24,7 +26,7 @@ PlasmoidItem {
             fillMode: Image.PreserveAspectFit
             source: imagePath !== "" ? imagePath : Qt.resolvedUrl("../images/evernight.gif")
             cache: true
-            smooth: true
+            speed: playbackSpeed / 10
         }
 
         MouseArea {

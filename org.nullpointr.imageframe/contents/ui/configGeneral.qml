@@ -8,7 +8,9 @@ import org.kde.kirigami 2.4 as Kirigami
 Kirigami.FormLayout {
     id: page
 
-    property alias cfg_imagePath: variableName.text
+    property alias cfg_imagePath: imagePath.text
+    property alias cfg_playbackSpeed: playbackSpeed.value
+    property alias cfg_smooth: smooth.checked
 
     RowLayout {
         QQD.FileDialog {
@@ -16,15 +18,14 @@ Kirigami.FormLayout {
 
             fileMode: QQD.FileDialog.OpenFile
             currentFolder: StandardPaths.standardLocations(StandardPaths.PicturesLocation)[0]
-            nameFilters: ["*.png *.jpg *.jpeg *.webp *.gif", "*"]
+            nameFilters: ["Images (*.png *.jpg *.jpeg *.webp *.gif)"]
             onAccepted: {
-                variableName.text = fileDialog.selectedFile.toString().replace("file://", "");
+                imagePath.text = selectedFile.toString().replace("file://", "")
             }
         }
 
         QQC2.TextField {
-            id: variableName
-
+            id: imagePath
             Kirigami.FormData.label: i18n("Picture:")
             placeholderText: i18n("No file selected.")
         }
@@ -34,7 +35,28 @@ Kirigami.FormLayout {
             icon.name: "folder-symbolic"
             onClicked: fileDialog.open()
         }
-
     }
 
+    RowLayout {
+        QQC2.SpinBox {
+            id: playbackSpeed
+            Kirigami.FormData.label: i18n("Playback speed:")
+            from: 0
+            stepSize: 1
+            value: 10
+
+            textFromValue: (v) => (v / 10).toFixed(1)
+            valueFromText: (t) => Math.round(Number(t) * 10)
+            width: 80
+        }
+    }
+
+    RowLayout {
+        QQC2.CheckBox {
+            id: smooth
+            Kirigami.FormData.label: i18n("Smoothing:")
+            text: i18n("Enable smooth scaling")
+            checked: true
+        }
+    }
 }
